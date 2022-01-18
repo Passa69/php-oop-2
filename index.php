@@ -76,6 +76,7 @@
             }
         }
 
+        // per ereditare da altre classi si ha sempre bisogno d riportare i dati in tutte le classi necessarie
         class Employee extends Person {
 
             private $retribution;
@@ -83,7 +84,7 @@
 
             public function __construct($name, $surname, $retribution) {
 
-                parent::__construct();
+                parent::__construct($name, $surname);
                 $this -> setRetribution($retribution);
             }
 
@@ -103,14 +104,15 @@
             
             // metodi
             public function getFullEmployee() {
-                return $this -> getName() . "<br>" . $this -> getSurname() . "<br>" . $this -> getRetribution() . " (" . $this -> getHiringDate() . ")";
+                return $this -> getName() . " " . $this -> getSurname() . "<br>" . $this -> getRetribution() . " (" . $this -> getHiringDate() . ")";
             }
 
             public function __toString() {
-                return $this -> getName() . "<br>" . $this -> getSurname() . "<br>" . $this -> getRetribution() . " (" . $this -> getHiringDate() . ")";
+                return $this -> getName() . " " . $this -> getSurname() . "<br>" . $this -> getRetribution() . " (" . $this -> getHiringDate() . ")";
             }
         }
 
+        // people
         $p1 = new Person("Bruce", "Banner");
         $p1 -> setDate("10/10/1979");
 
@@ -120,15 +122,17 @@
         $p3 = new Person("Frank", "Castle");
         $p3 -> setDate("22/11/1975");
         
-        $e1 = new Employee("2.500$");
+        // employees
+        $e1 = new Employee("Bruce", "Banner", "2.500$");
         $e1 -> setHiringDate("12/12/2000");
 
-        $e2 = new Employee("3.500$");
+        $e2 = new Employee("Matt", "Murdock", "3.500$");
         $e2 -> setHiringDate("20/05/2006");
 
-        $e3 = new Employee("2.150$");
+        $e3 = new Employee("Frank", "Castle", "2.150$");
         $e3 -> setHiringDate("17/09/2002");
 
+        // stampa su pagina
         echo $p1 . "<br><br>";
         echo $p2 . "<br><br>";
         echo $p3 . "<br><br>";
@@ -138,7 +142,7 @@
         echo $e1 . "<br><br>";
         echo $e2 . "<br><br>";
         echo $e3 . "<br><br>";
-        ?>
+    ?>
         
 </body>
 </html>
